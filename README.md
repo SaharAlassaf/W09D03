@@ -54,7 +54,8 @@ $ npm start
 
 ## UML diagram
 
-![Influence Diagram Template (3)](https://user-images.githubusercontent.com/92248067/145273471-47441f5b-3ddf-4a4f-a6c5-21e7bb9c1f21.jpg)
+![Influence Diagram Template (5)](https://user-images.githubusercontent.com/92248067/145277051-18029765-e7f1-47a9-bb69-0f686c50ecfd.jpg)
+
 
 ## Back end 
 [Back-end repository](https://github.com/SaharAlassaf/W08D03)
