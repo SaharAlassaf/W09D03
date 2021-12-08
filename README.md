@@ -54,7 +54,7 @@ $ npm start
 
 ## UML diagram
 
-![Influence Diagram Template (5)](https://user-images.githubusercontent.com/92248067/145277051-18029765-e7f1-47a9-bb69-0f686c50ecfd.jpg | width=100)
+![Influence Diagram Template (5)](https://user-images.githubusercontent.com/92248067/145277051-18029765-e7f1-47a9-bb69-0f686c50ecfd.jpg =250x250)
 
 
 ## Back end 
