@@ -64,9 +64,9 @@ function Tasks() {
           headers: { Authorization: `Bearer ${state.sign.token}` },
         }
       );
-      // console.log(res.data);
+      console.log(res.data);
       // getUserTasks();
-      dispatch(postTasks(res.data));
+      dispatch(putTasks(res.data));
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +81,7 @@ function Tasks() {
           headers: { Authorization: `Bearer ${state.sign.token}` },
         }
       );
-      // console.log(res.data);
+      // console.log("delete t",res.data, id);
       dispatch(deleteTasks(id));
     } catch (error) {
       console.log(error);

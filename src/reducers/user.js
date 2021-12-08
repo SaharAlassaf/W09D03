@@ -14,21 +14,19 @@ const user = (state = initState, action) => {
       return { tasks };
 
     case "PUT_TASKS":
-      const { update } = payload;
-      console.log("tasks", tasks);
-      const newTasks = state.tasks.map((item) => {
-        if (update._id == item.id) {
-          return { ...item, name: update };
-        } else {
-          return item;
-        }
-      });
-      console.log(newTasks);
-      return { tasks: newTasks };
+      return {
+        tasks: state.tasks.map((item) => {
+
+          if (payload._id === item._id) {
+            return { ...item, name: payload.name };
+          } else {
+            return item;
+          }
+        }),
+      };
 
     case "DELETE_TASKS":
-      const { id } = payload;
-      return { tasks: state.tasks.filter((item) => item._id !== id) };
+      return { tasks: state.tasks.filter((item) => item._id !== payload) };
 
     default:
       return state;

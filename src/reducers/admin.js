@@ -10,9 +10,7 @@ const admin = (state = initState, action) => {
       return payload;
 
     case "DELETE_TASKS":
-      const { id } = payload;
-      const delTasks = state.tasks.filter((item) => item._id !== id);
-      return { tasks: delTasks };
+      return { tasks: state.tasks.filter((item) => item._id !== payload) };
 
     default:
       return state;
