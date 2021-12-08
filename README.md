@@ -30,8 +30,8 @@ $ npm start
 | Path             | Component            | Permissions                | Behavior                                                     |
 | ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
 | `/`              | Landing              | anyone                     | Home page                                                    |
-| `/Signup`        | Signup               | anyone                     | Signup form, link to tasks                                   |
-| `/Signin`        | Signin               | anyone                     | Login form, link to tasks                                    |
+| `/Signup`        | Signup               | anyone                     | Signup form, link to tasks if user or to dashboard if admin |
+| `/Signin`        | Signin               | anyone                     | Signin form, link to tasks if user or to dashboard if admin |
 | `/Dashboard`     | Dashboard            | admin only                 | Shows all users's tasks                                      |
 | `/Tasks`         | Tasks                | user only                  | Shows user's tasks                                           |
 
