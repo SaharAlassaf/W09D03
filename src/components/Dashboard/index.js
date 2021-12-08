@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../reducers/sign";
-import { adminTasks } from "../../reducers/tasks";
+import { getAllTasks } from "../../reducers/admin";
 import Landing from "../Landing";
 import Task from "../Task";
 import axios from "axios";
@@ -17,9 +17,11 @@ function Dashboard() {
   const state = useSelector((state) => {
     return {
       sign: state.sign,
-      tasks: state.tasks.adminTask,
+      admin: state.admin,
     };
   });
+
+  console.log("tasks", state.admin);
 
   const getTasks = async () => {
     try {
@@ -27,7 +29,7 @@ function Dashboard() {
         headers: { Authorization: `Bearer ${state.sign.token}` },
       });
       console.log(res.data);
-      dispatch(adminTasks({ adminTask: res.data }));
+      dispatch(getAllTasks(res.data));
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +60,7 @@ function Dashboard() {
       {state.sign.token ? (
         <>
           <ul>
-            {state.tasks.map((item) => (
+            {state.admin.tasks.map((item) => (
               <Task key={item._id} item={item} deleteTasks={deleteTasks} />
             ))}
           </ul>

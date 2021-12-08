@@ -12,7 +12,7 @@ function Signin() {
 
   const state = useSelector((state) => {
     return {
-      sign: state.sign.token,
+      sign: state.sign,
     };
   });
   console.log(state.sign);
@@ -37,7 +37,7 @@ function Signin() {
 
   return (
     <>
-      {!state.sign ? (
+      {!state.sign.token ? (
         <>
           <input
             type="email"

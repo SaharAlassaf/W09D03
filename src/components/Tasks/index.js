@@ -4,20 +4,20 @@ import { useSelector, useDispatch } from "react-redux";
 import Landing from "../Landing";
 import Task from "../Task";
 import { logout } from "../../reducers/sign";
-import { userTasks } from "../../reducers/tasks";
+import { getTasks, postTasks, putTasks, deleteTasks } from "../../reducers/user";
 import axios from "axios";
 
 function Tasks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getTasks();
+    getUserTasks();
   }, []);
 
   const state = useSelector((state) => {
     return {
       sign: state.sign,
-      tasks: state.tasks.userTask,
+      user: state.user,
     };
   });
 
@@ -33,19 +33,19 @@ function Tasks() {
         }
       );
       // console.log(res.data);
-      getTasks();
+      dispatch(postTasks(res.data));
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getTasks = async () => {
+  const getUserTasks = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/`, {
         headers: { Authorization: `Bearer ${state.sign.token}` },
       });
       // console.log(res.data);
-      dispatch(userTasks({userTask: res.data}));
+      dispatch(getTasks(res.data));
       // setTasks(res.data);
     } catch (error) {
       console.log(error);
@@ -54,6 +54,7 @@ function Tasks() {
 
   const updateTask = async (e, id) => {
     try {
+      e.preventDefault();
       let name = e.target.newTaskVal.value;
 
       const res = await axios.put(
@@ -64,7 +65,8 @@ function Tasks() {
         }
       );
       // console.log(res.data);
-      getTasks();
+      // getUserTasks();
+      dispatch(postTasks(res.data));
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +82,7 @@ function Tasks() {
         }
       );
       // console.log(res.data);
-      getTasks();
+      dispatch(deleteTasks(id));
     } catch (error) {
       console.log(error);
     }
@@ -104,7 +106,7 @@ function Tasks() {
             <input type="submit" value="Add" />
           </form>
           <ul>
-            {state.tasks.map((item) => (
+            {state.user.tasks.map((item) => (
               <Task
                 key={item._id}
                 userItem={item}

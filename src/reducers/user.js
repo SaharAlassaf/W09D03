@@ -7,16 +7,28 @@ const user = (state = initState, action) => {
 
   switch (type) {
     case "GET_TASKS":
-      return { Tasks };
+      return payload;
 
     case "POST_TASKS":
-      return { Tasks };
+      const tasks = [...state.tasks, payload];
+      return { tasks };
 
     case "PUT_TASKS":
-      return { Tasks };
+      const { update } = payload;
+      console.log("tasks", tasks);
+      const newTasks = state.tasks.map((item) => {
+        if (update._id == item.id) {
+          return { ...item, name: update };
+        } else {
+          return item;
+        }
+      });
+      console.log(newTasks);
+      return { tasks: newTasks };
 
     case "DELETE_TASKS":
-      return { Tasks };
+      const { id } = payload;
+      return { tasks: state.tasks.filter((item) => item._id !== id) };
 
     default:
       return state;
@@ -28,7 +40,7 @@ export default user;
 export const getTasks = (data) => {
   return {
     type: "GET_TASKS",
-    payload: data,
+    payload: { tasks: data },
   };
 };
 
