@@ -37,7 +37,7 @@ $ npm start
 
 ## Reducers
 
-| Reducers         | action                                                                                                         | Default                    |
+| Reducer          | action                                                                                                         | Default                    |
 | ---------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | sign             | set role and token if type`"LOGIN"` and reset if type `"LOGOUT"`                                                                                                                                                                           | `{ role: "", token: ""}`   |
 | user             | set tasks if type `"GET_TASKS"`, set new task type `"POST_TASKS"`, set updated task if type `"PUT_TASKS"` and reset deleter task if type `"DELETE_TASKS"`   | `{ tasks: [] }`            | 
